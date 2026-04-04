@@ -133,16 +133,16 @@ def track_persons(model, frame):
         })
 
             # update last known for all visible tracks
-    for t in tracks:
-        last_known_boxes[t['track_id']] = t
+    ##for t in tracks:
+        ##last_known_boxes[t['track_id']] = t
 
     # add back recently lost tracks
-    for tid, t in last_known_boxes.items():
-        if tid not in {x['track_id'] for x in tracks}:
-            if static_counter.get(tid, 0) <= MAX_STATIC_FRAMES:
-                ghost = t.copy()
-                ghost['direction'] = 'stationary'
-                tracks.append(ghost)
+    #for tid, t in last_known_boxes.items():
+       # if tid not in {x['track_id'] for x in tracks}:
+           # if static_counter.get(tid, 0) <= MAX_STATIC_FRAMES:
+              #  ghost = t.copy()
+               # ghost['direction'] = 'stationary'
+              #  tracks.append(ghost)
 
     return tracks
 
@@ -269,7 +269,7 @@ if __name__ == "__main__":
     Press Q to quit.
     """
     model = load_model()
-    cap = cv2.VideoCapture(r"C:\Users\Admin\OneDrive\Desktop\child_track\computer-vision-project-childtrack\WhatsApp Video 2026-04-04 at 6.02.00 PM.mp4")
+    cap = cv2.VideoCapture(0) 
 
 
     print("Track test running — press Q to quit")
