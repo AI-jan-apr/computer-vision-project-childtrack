@@ -35,10 +35,13 @@ import cv2
 import sys
 import os
 
+import reid
+
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from config import YOLO_MODEL_PATH, YOLO_CONFIDENCE, MOVEMENT_THRESHOLD, ENTRY_DIRECTION
 from detect import load_model
+from reid import ReID
 
 prev_centroids = {}
 # Format: { track_id: (cx, cy) }
@@ -51,6 +54,8 @@ static_counter = {}
 
 last_known_boxes = {}
 # Format: { track_id: {bbox, centroid, label, conf, direction} }
+
+reid = ReID()
  
 MAX_STATIC_FRAMES = 30
 
@@ -109,10 +114,14 @@ def track_persons(model, frame):
         label           = model.names[int(box.cls)]
         conf            = round(float(box.conf), 2)
         cx, cy          = (x1 + x2) // 2, (y1 + y2) // 2
+        crop = frame[y1:y2, x1:x2]
+        embedding = reid.extract(crop)
+        person_id = reid.match(embedding)
         direction       = _get_direction(track_id, (cx, cy))
 
         tracks.append({
             'track_id'  : track_id,
+            'person_id' : person_id,
             'bbox'      : [x1, y1, x2, y2],
             'centroid'  : (cx, cy),
             'label'     : label,
