@@ -8,7 +8,7 @@
 # YOLO Detection Settings
 # ---------------------------
 YOLO_MODEL_PATH = "models/yolo/best.pt"
-YOLO_CONFIDENCE = 0.4
+YOLO_CONFIDENCE = 0.3
 
 # ---------------------------
 # Input Source
@@ -50,15 +50,20 @@ OUTPUT_RESULTS_DIR = "outputs/results/"
 OUTPUT_ALERTS_DIR = "outputs/alerts/"
 OUTPUT_LOGS_DIR = "outputs/logs/"
 
+#======================================================================================
 
 #track.py parameters:
 
-TRACK_MAX_AGE      = 30     # frames to keep a lost track before deleting it
+TRACK_MAX_AGE      = 60 #30     # frames to keep a lost track before deleting it
 TRACK_MIN_HITS     = 3      # frames a person must appear before getting a stable ID
 TRACK_IOU_THRESH   = 0.3    # IoU threshold for matching between frames
 
 # ──────────────────────────────────────
 # Direction Settings
 # ──────────────────────────────────────
-ENTRY_DIRECTION    = 'right' # 'right' or 'left' — depends on your camera setup
-MOVEMENT_THRESHOLD = 5       # pixels — movement below this = stationary
+ENTRY_DIRECTION    = 'left' # 'right' or 'left' — depends on your camera setup
+MOVEMENT_THRESHOLD = 3      # pixels — movement below this = stationary
+
+YOLO_MODEL_PATH = r"C:\Users\hamee\OneDrive\سطح المكتب\Alaa_Tuwaiq\Projects\ComputerVision_Project\computer-vision-project-childtrack\yolo\best (2).pt"
+
+
