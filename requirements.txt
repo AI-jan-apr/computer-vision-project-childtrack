@@ -1,17 +1,12 @@
-ultralytics for object detection(YOLOv8)
-opencv-python for video processing
-torch for deep learning
-torchvision for pre-trained models and image transformations
-numpy for numerical operations
-pandas for data handling
-scipy for scientific computing (e.g., distance calculations)
-gradio for creating web interfaces
-sqlite3 for database operations
-bytetrack for tracking
-torchreid for OSNet re-identification
-Pillow for image processing
-# ByteTrack
-pip install git+https://github.com/ifzhang/ByteTrack.git
-
-# torchreid (OSNet)
-pip install git+https://github.com/KaiyangZhou/deep-person-reid.git
+ultralytics 
+opencv-python 
+torch 
+torchvision 
+numpy 
+pandas 
+scipy 
+gradio 
+torchreid 
+Pillow 
+tensorboard
+gdown
