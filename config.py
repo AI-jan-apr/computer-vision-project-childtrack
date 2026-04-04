@@ -42,6 +42,7 @@ CENTROID_RADIUS = 4
 # ---------------------------
 ENTRY_TIME_WINDOW = 4            # seconds
 DISTANCE_THRESHOLD = 120         # pixels (initial guess)
+EXIT_CONFIRM_FRAMES = 10
 
 # ---------------------------
 # Output Paths (for later)
@@ -64,6 +65,6 @@ TRACK_IOU_THRESH   = 0.3    # IoU threshold for matching between frames
 ENTRY_DIRECTION    = 'left' # 'right' or 'left' — depends on your camera setup
 MOVEMENT_THRESHOLD = 3      # pixels — movement below this = stationary
 
-YOLO_MODEL_PATH = r"C:\Users\hamee\OneDrive\سطح المكتب\Alaa_Tuwaiq\Projects\ComputerVision_Project\computer-vision-project-childtrack\yolo\best (2).pt"
+YOLO_MODEL_PATH = YOLO_MODEL_PATH = r"C:\Users\Admin\OneDrive\Desktop\child_track\computer-vision-project-childtrack\yolo\best (2).pt"
 
 
