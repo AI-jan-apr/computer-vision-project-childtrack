@@ -30,6 +30,8 @@ class ReID:
 
         img = cv2.resize(img, (128, 256))
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        from PIL import Image
+        img = Image.fromarray(img)
 
         img = self.transform(img).unsqueeze(0)
 

@@ -99,6 +99,9 @@ def track_persons(model, frame):
         tracker = "bytetrack.yaml",
         verbose = False
     )
+    
+    print(results[0].boxes)
+    print(results[0].boxes.id)
 
 
 
@@ -266,7 +269,8 @@ if __name__ == "__main__":
     Press Q to quit.
     """
     model = load_model()
-    cap   = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(r"C:\Users\Admin\OneDrive\Desktop\child_track\computer-vision-project-childtrack\WhatsApp Video 2026-04-04 at 6.02.00 PM.mp4")
+
 
     print("Track test running — press Q to quit")
     print("Look for: ID:N | adult/child | entry/exit/stationary")
