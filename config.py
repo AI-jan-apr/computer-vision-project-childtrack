@@ -63,6 +63,18 @@ TRACK_IOU_THRESH   = 0.3    # IoU threshold for matching between frames
 # ──────────────────────────────────────
 ENTRY_DIRECTION    = 'left' # 'right' or 'left' — depends on your camera setup
 MOVEMENT_THRESHOLD = 3      # pixels — movement below this = stationary
+# ---------------------------
+# group_manager.py parameters
+# ---------------------------
+EXIT_CONFIRM_FRAMES   = 8
+GROUP_TIMEOUT_WARNING = 14400
+GROUP_TIMEOUT_ALERT   = 21600
+
+# ---------------------------
+# database.py parameters
+# ---------------------------
+import os
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src', 'ccms.db')
 
 YOLO_MODEL_PATH = r"C:\Users\hamee\OneDrive\سطح المكتب\Alaa_Tuwaiq\Projects\ComputerVision_Project\computer-vision-project-childtrack\yolo\best (2).pt"
 
