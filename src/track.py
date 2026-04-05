@@ -42,6 +42,9 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from config import YOLO_MODEL_PATH, YOLO_CONFIDENCE, MOVEMENT_THRESHOLD, ENTRY_DIRECTION
 from detect import load_model
 from reid import ReID
+from group_manager import GroupManager
+from alert_engine import AlertEngine
+from matcher import Matcher
 
 prev_centroids = {}
 # Format: { track_id: (cx, cy) }
@@ -56,6 +59,9 @@ last_known_boxes = {}
 # Format: { track_id: {bbox, centroid, label, conf, direction} }
 
 reid = ReID()
+gm = GroupManager()
+ae = AlertEngine()
+matcher = Matcher()
  
 MAX_STATIC_FRAMES = 30
 
@@ -109,7 +115,7 @@ def track_persons(model, frame):
 
     # No detections this frame
     if results[0].boxes.id is None:
-        return tracks
+        return []
 
     for box in results[0].boxes:
         x1, y1, x2, y2 = map(int, box.xyxy[0])
@@ -269,7 +275,7 @@ if __name__ == "__main__":
     Press Q to quit.
     """
     model = load_model()
-    cap = cv2.VideoCapture(0) 
+    cap = cv2.VideoCapture(r"C:\Users\Admin\OneDrive\Desktop\child_track\computer-vision-project-childtrack\WhatsApp Video 2026-04-04 at 6.02.00 PM.mp4") 
 
 
     print("Track test running — press Q to quit")
@@ -282,6 +288,14 @@ if __name__ == "__main__":
 
         # Run detection + tracking
         tracks = track_persons(model, frame)
+        events = gm.update(tracks)
+        alerts = ae.process(events)
+
+        for e in events:
+            print("EVENT:", e)
+
+        for a in alerts:
+            print("🚨 ALERT:", a)
 
         # Cleanup stale IDs
         active_ids = {t['track_id'] for t in tracks}
